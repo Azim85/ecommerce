@@ -1,0 +1,26 @@
+{% extends 'main/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+        <div class="card mt-2">
+            <div class="card-header d-flex align-items-center">
+                <img src="{{post.author.profile.image.url}} " class="mr-3" alt="img" style="width:30px; height:30px; border-radius:50%">
+                <small class="mr-1"><a href="{% url 'main:user-post' object.author.username %}">Published by {{object.author}}</a></small>
+                <small class="mr-3">on {{object.published|date:'d F, Y'}}</small>
+                {% if object.author == user %}
+                    <small class="mr-3"><a href="{% url 'main:update' object.id %}">Update</a></small>
+                    <small class="mr-3"><a href="{% url 'main:delete' object.id %}">Delete</a></small>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{object.title}}</h5>
+                <p class="card-text">{{object.content}}</p>
+            </div>
+        </div>
+{% endblock content %}
+
+
+{% block js %}
+    
+{% endblock js %}
+

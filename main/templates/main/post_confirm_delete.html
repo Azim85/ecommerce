@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="card px-4 py-3">
+        <h3 class="text-center text-uppercase">Delete Post</h3>
+        <h4 class="text-muted">Are you sure you want to delete the post "{{object.title}}"</h4>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">Yes, Delete</button>
+            <a href="{% url 'main:detail' object.id %}" class="btn btn-secondary btn-sm">Cancel</a>
+        </form>
+            
+    </div>
+{% endblock content %}
+
+
+{% block js %}
+    
+{% endblock js %}
+
