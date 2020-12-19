@@ -3,3 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post
 
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
+        
+        widgets = {
+            'title':forms.TextInput(attrs={'class': 'form-conrtol'}),
+            'content':forms.Textarea(attrs={'class':'form-control'})
+        }
